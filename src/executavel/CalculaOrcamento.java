@@ -1,37 +1,32 @@
 package executavel;
 
-import java.util.Locale;
-import java.util.Scanner;
-
-import controller.Icms;
-import model.OrcamentoModel;
+import controller.COFINS;
+import controller.ICMS;
+import controller.ISS;
+import controller.PIS;
+import model.Item;
+import model.Orcamento;
 
 public class CalculaOrcamento {
 
 	public static void main(String[] args) {
-		// Leitor dos dados
-		Scanner scan = new Scanner(System.in);
-		scan.useLocale(Locale.US); // Seta localidade para definir ponto como separador
-
-		OrcamentoModel orcamento = new OrcamentoModel();
-		Icms icms = new Icms();
+		Orcamento orcamento = new Orcamento();
+		orcamento.adicionaItem(new Item("Camisa flamengo", 459.90));
+		orcamento.adicionaItem(new Item("Camisa palmeiras", 200.00));
+		orcamento.adicionaItem(new Item("Camisa corinthians", 399.99));
+		orcamento.adicionaItem(new Item("Camisa são paulo", 299.99));
+		orcamento.adicionaItem(new Item("Camisa vasco", 100.00));
+		orcamento.adicionaItem(new Item("Camisa santos", 250.00));
 		
-		double valorInicial = 0;
-		double valorCalculado = 0;
-
-		for (int i = 0; i < 4; i++) {
-			System.out.println("Digite um valor:");
-			valorInicial += scan.nextDouble();
-
-		}
-
-		scan.close(); // Fecha leitura de dados
+		double icms = new ICMS().calcular(orcamento);
+		double iss = new ISS().calcular(orcamento);
+		double cofins = new COFINS().calcular(orcamento);
+		double pis = new PIS().calcular(orcamento);
 		
-		orcamento.setValorInicial(valorInicial);
-		valorCalculado = icms.calcular(orcamento.getValorInicial());
 		
-		System.out.printf("Valor inicial: R$ %.2f\n", valorInicial);
-		System.out.printf("Valor calculado ICMS: R$ %.2f", valorCalculado);
-
+		System.out.println("ICMS: " + icms);
+		System.out.println("ISS: " + iss);
+		System.out.println("COFINS: " + cofins);
+		System.out.println("PIS: " + pis);
 	}
 }

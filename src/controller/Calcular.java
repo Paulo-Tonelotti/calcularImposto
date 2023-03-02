@@ -1,7 +1,7 @@
 package controller;
 
-
+import model.Orcamento;
 
 public interface Calcular {
-	double calcular(double valor);
+	double calcular(Orcamento orcamento);
 }
