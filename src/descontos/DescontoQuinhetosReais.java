@@ -1,4 +1,4 @@
-package controller.descontos;
+package descontos;
 
 import model.Orcamento;
 

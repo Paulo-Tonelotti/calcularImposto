@@ -1,4 +1,4 @@
-package controller.impostos;
+package impostos;
 
 import java.util.List;
 

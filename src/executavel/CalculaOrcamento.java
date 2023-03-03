@@ -1,10 +1,10 @@
 package executavel;
 
-import controller.descontos.CalculaDesconto;
-import controller.impostos.COFINS;
-import controller.impostos.ICMS;
-import controller.impostos.ISS;
-import controller.impostos.PIS;
+import descontos.CalculaDesconto;
+import impostos.COFINS;
+import impostos.ICMS;
+import impostos.ISS;
+import impostos.PIS;
 import model.Item;
 import model.Orcamento;
 

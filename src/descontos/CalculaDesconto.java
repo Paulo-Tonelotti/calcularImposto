@@ -1,4 +1,4 @@
-package controller.descontos;
+package descontos;
 
 
 import java.util.ArrayList;

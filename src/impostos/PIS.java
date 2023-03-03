@@ -1,12 +1,13 @@
-package controller.impostos;
+package impostos;
 
 import java.util.List;
 
 import model.Item;
 import model.Orcamento;
 
-public class ICMS implements Calcular {
-	double ICMS = 0.17;
+public class PIS implements Calcular{
+	
+	double PIS = 0.0065;
 
 	@Override
 	public double calcular(Orcamento orcamento) {
@@ -15,7 +16,7 @@ public class ICMS implements Calcular {
 		for (Item item : itens) {
 			somaItens += item.getValor();
 		}
-		return ICMS * somaItens;
+		return PIS * somaItens;
 	}
 	
 
