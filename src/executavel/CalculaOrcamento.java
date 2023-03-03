@@ -1,9 +1,10 @@
 package executavel;
 
-import controller.COFINS;
-import controller.ICMS;
-import controller.ISS;
-import controller.PIS;
+import controller.descontos.CalculaDesconto;
+import controller.impostos.COFINS;
+import controller.impostos.ICMS;
+import controller.impostos.ISS;
+import controller.impostos.PIS;
 import model.Item;
 import model.Orcamento;
 
@@ -11,22 +12,23 @@ public class CalculaOrcamento {
 
 	public static void main(String[] args) {
 		Orcamento orcamento = new Orcamento();
-		orcamento.adicionaItem(new Item("Camisa Flamengo", 459.90));
-		orcamento.adicionaItem(new Item("Camisa Palmeiras", 200.00));
-		orcamento.adicionaItem(new Item("Camisa Corinthians", 399.99));
-		orcamento.adicionaItem(new Item("Camisa São Paulo", 299.99));
-		orcamento.adicionaItem(new Item("Camisa Vasco", 100.00));
-		orcamento.adicionaItem(new Item("Camisa Santos", 250.00));
+		orcamento.adicionaItem(new Item("Caneta", 200));
+		orcamento.adicionaItem(new Item("Borracha", 100));
+		orcamento.adicionaItem(new Item("Lápis", 300));
 		
 		double icms = new ICMS().calcular(orcamento);
 		double iss = new ISS().calcular(orcamento);
 		double cofins = new COFINS().calcular(orcamento);
 		double pis = new PIS().calcular(orcamento);
 		
+		double desconto = new CalculaDesconto().calculaDesc(orcamento);
 		
-		System.out.println("ICMS: " + icms);
-		System.out.println("ISS: " + iss);
-		System.out.println("COFINS: " + cofins);
-		System.out.println("PIS: " + pis);
+		
+		System.out.printf("VALOR ORÇAMENTO: %.2f\n", orcamento.valorTotal());
+		System.out.printf("ICMS: %.2f\n", icms);
+		System.out.printf("ISS: %.2f\n" , iss);
+		System.out.printf("COFINS: %.2f\n" , cofins);
+		System.out.printf("PIS: %.2f\n" , pis);
+		System.out.printf("DESCONTO: %.2f" , desconto);
 	}
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Orcamento {
-	double valor;
 	List<Item> itens = new ArrayList<Item>();
 	
 	public void adicionaItem(Item item){
@@ -15,12 +14,14 @@ public class Orcamento {
 		return itens;
 	}
 	
-	public double getValor() {
-		return valor;
-	}
-
-	public void setValor(double valorInicial) {
-		this.valor = valorInicial;
+	
+	public double valorTotal() {
+		double valorTotal = 0;
+		for (Item item : this.itens ) {
+			valorTotal += item.getValor();
+		}
+		return valorTotal;
+		
 	}
 
 	

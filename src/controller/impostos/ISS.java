@@ -1,13 +1,13 @@
-package controller;
+package controller.impostos;
 
 import java.util.List;
 
 import model.Item;
 import model.Orcamento;
 
-public class COFINS implements Calcular {
+public class ISS implements Calcular{
 	
-	double COFINS = 0.03;
+	double ISS = 0.05;
 
 	@Override
 	public double calcular(Orcamento orcamento) {
@@ -16,7 +16,9 @@ public class COFINS implements Calcular {
 		for (Item item : itens) {
 			somaItens += item.getValor();
 		}
-		return COFINS * somaItens;
+		return ISS * somaItens;
 	}
+	
+	
 
 }
