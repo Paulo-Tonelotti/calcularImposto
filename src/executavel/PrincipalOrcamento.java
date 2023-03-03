@@ -8,7 +8,7 @@ import impostos.PIS;
 import model.Item;
 import model.Orcamento;
 
-public class CalculaOrcamento {
+public class PrincipalOrcamento {
 
 	public static void main(String[] args) {
 		Orcamento orcamento = new Orcamento();
