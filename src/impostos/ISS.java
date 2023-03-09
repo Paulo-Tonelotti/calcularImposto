@@ -5,8 +5,15 @@ import java.util.List;
 import model.Item;
 import model.Orcamento;
 
-public class ISS implements Calcular{
+public class ISS extends Imposto{
+	public ISS() {
+		this.novoImposto = null;
+	}
 	
+	public ISS(Imposto novoImposto) {
+		super(novoImposto);
+	}
+
 	double ISS = 0.05;
 
 	@Override
@@ -16,9 +23,15 @@ public class ISS implements Calcular{
 		for (Item item : itens) {
 			somaItens += item.getValor();
 		}
-		return ISS * somaItens;
+		return (ISS * somaItens) + calOutroImposto(orcamento);
 	}
 	
+	protected double calOutroImposto(Orcamento orcamento) {
+		if(novoImposto == null) {
+			return 0;
+		}
+		return novoImposto.calcular(orcamento);
+	}
 	
 
 }

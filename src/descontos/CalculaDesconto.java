@@ -1,32 +1,22 @@
 package descontos;
 
 
-import java.util.ArrayList;
-import java.util.List;
 
 import model.Orcamento;
 
 public class CalculaDesconto {
 	
 	public double calculaDesc(Orcamento orcamento) {
-		double desconto = 0;
 		
-		Desconto desc1 = new DescontoCincoItens();
-		Desconto desc2 = new DescontoQuinhetosReais();
-		Desconto desc3 = new SemDesconto();
+		Desconto d1 = new DescontoCincoItens();
+		Desconto d2 = new DescontoQuinhetosReais();
+		Desconto d3 = new SemDesconto();
 		
-		List<Desconto> descontos = new ArrayList<Desconto>();
-		descontos.add(desc1);
-		descontos.add(desc2);
-		descontos.add(desc3);
+		d1.setProximo(d2);
+		d2.setProximo(d3);
 		
-		for (Desconto d : descontos) {
-			if (d.CalculaDesc(orcamento) != 0) {
-				desconto = d.CalculaDesc(orcamento);
-				break;
-			}
-		}
 		
-		return desconto;
+		
+		return d1.Desconta(orcamento);
 	}
 }

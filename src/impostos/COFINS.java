@@ -5,8 +5,16 @@ import java.util.List;
 import model.Item;
 import model.Orcamento;
 
-public class COFINS implements Calcular {
+public class COFINS extends Imposto {
 	
+	public COFINS() {
+		this.novoImposto = null;
+	}
+	
+	public COFINS(Imposto novoImposto) {
+		super(novoImposto);
+	}
+
 	double COFINS = 0.03;
 
 	@Override
@@ -16,7 +24,15 @@ public class COFINS implements Calcular {
 		for (Item item : itens) {
 			somaItens += item.getValor();
 		}
-		return COFINS * somaItens;
+		return (COFINS * somaItens) + calOutroImposto(orcamento);
+	}
+	
+	@Override
+	protected double calOutroImposto(Orcamento orcamento) {
+		if(novoImposto == null) {
+			return 0;
+		}
+		return novoImposto.calcular(orcamento);
 	}
 
 }
