@@ -18,7 +18,7 @@ public class PrincipalOrcamento {
 		orcamento.adicionaItem(new Item("Caneta", 200));
 		orcamento.adicionaItem(new Item("Borracha", 100));
 		orcamento.adicionaItem(new Item("Lápis", 300));
-		orcamento.adicionaItem(new Item("Caneta", 200));
+		orcamento.adicionaItem(new Item("Agua", 200));
 		orcamento.adicionaItem(new Item("Tesoura", 300));
 		orcamento.adicionaItem(new Item("Régua", 300));
 		
